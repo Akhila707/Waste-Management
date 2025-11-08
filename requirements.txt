@@ -1,7 +1,14 @@
-streamlit==1.27.0
-pandas==2.0.3
-numpy==1.24.3
-Pillow==9.5.0
-scikit-learn==1.3.0
-joblib==1.3.2
-requests==2.31.0
+# --- Streamlit Waste Management App dependencies ---
+
+# Core packages
+streamlit>=1.27.0
+pandas>=2.0.3
+numpy>=1.26.0
+scikit-learn
+opencv-python-headless
+Pillow
+joblib
+
+# Email + utility
+email-validator
+setuptools>=65.0.0
