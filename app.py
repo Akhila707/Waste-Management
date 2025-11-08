@@ -89,22 +89,16 @@ if 'notification_sent' not in st.session_state:
 @st.cache_resource
 def load_model():
     try:
-        model = joblib.load('/Users/anubhavverma/Desktop/waste_management/random_forest_model_fixed.pkl')
-        scaler = joblib.load('/Users/anubhavverma/Desktop/waste_management/scaler_fixed.pkl')
-        st.success("✅ Model loaded successfully!")
+        model_path = os.path.join(os.path.dirname(__file__), 'random_forest_model_fixed.pkl')
+        scaler_path = os.path.join(os.path.dirname(__file__), 'scaler_fixed.pkl')
+        
+        model = joblib.load(model_path)
+        scaler = joblib.load(scaler_path)
+        st.success("✅ Successfully loaded model and scaler!")
         return model, scaler
     except Exception as e:
         st.error(f"Error loading model: {e}")
-        try:
-            with open('random_forest_model_fixed.pkl', 'rb') as f:
-                model = pickle.load(f)
-            with open('scaler_fixed.pkl', 'rb') as f:
-                scaler = pickle.load(f)
-            return model, scaler
-        except Exception as e2:
-            st.error(f"Backup model loading failed: {e2}")
-            return None, None
-
+        return None, None
 # ------------------------------------------------------------
 # Email Sender (fixed receiver)
 # ------------------------------------------------------------
